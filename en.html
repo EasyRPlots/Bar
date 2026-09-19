@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Lucio | Your Local Bar</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles for specific needs */
+        .hero-bg {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.9)), url('Background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Smooth reveal animation classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .language-switcher a {
+            text-decoration: none;
+            font-size: 24px;
+            margin-left: 10px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .language-switcher img {
+            border-radius: 3px;
+            vertical-align: middle;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-switcher a:hover,
+        .language-switcher a.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                top: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-neutral-900 text-neutral-300 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-neutral-950/80 backdrop-blur-md border-b border-white/10"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl font-bold text-amber-500 flex items-center gap-2">
+                        <i class="fa-solid fa-wine-glass"></i> Casa Lucio </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#menu"
+                        class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Menu</a>
+                    <a href="#ubicacion"
+                        class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Location</a>
+                    <a href="#contacto"
+                        class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Contact</a>
+                    <a href="https://wa.me/34623631830?text=Hello,%20I%20would%20like%20to%20book%20a%20table"
+                        target="_blank"
+                        class="bg-amber-600 hover:bg-amber-500 text-white px-5 py-2 rounded-full transition-colors text-sm font-semibold shadow-lg shadow-amber-900/20">
+                        Book a Table
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-neutral-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-neutral-900 border-b border-white/10">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#menu"
+                    class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Menu</a>
+                <a href="#ubicacion"
+                    class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Location</a>
+                <a href="#contacto"
+                    class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Contact</a>
+                <a href="https://wa.me/34623631830?text=Hello,%20I%20would%20like%20to%20book%20a%20table"
+                    target="_blank"
+                    class="mobile-link block mt-4 bg-amber-600 text-white px-5 py-2 rounded-full w-full text-center">
+                    Book
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative hero-bg h-screen flex items-center justify-center text-center">
+        <div class="relative z-10 max-w-4xl px-4 sm:px-6 lg:px-8 flex flex-col items-center reveal active">
+            <span class="text-amber-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4">Welcome to your
+                home</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white font-serif mb-6 leading-tight">Casa Lucio</h1>
+
+            <p class="mt-4 text-xl md:text-2xl text-neutral-300 font-light mb-10 max-w-2xl mx-auto">
+                Where good times are shared. Enjoy our artisanal tapas and signature cocktails.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#menu"
+                    class="px-8 py-3 border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-neutral-900 rounded-full transition-all duration-300 font-semibold text-lg">
+                    View Menu
+                </a>
+                <a href="#ubicacion"
+                    class="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full transition-all duration-300 font-semibold text-lg">
+                    Directions
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#menu" class="text-white/50 hover:text-amber-500 transition-colors">
+                <i class="fa-solid fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+        <div class="language-switcher">
+            <a href="index.html" title="Español">
+                <img src="https://flagcdn.com/w40/es.png" alt="Bandera de España" width="28">
+            </a>
+            <a href="en.html" class="active" title="English">
+                <img src="https://flagcdn.com/w40/gb.png" alt="Bandera del Reino Unido" width="28">
+            </a>
+        </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-amber-500 uppercase tracking-widest text-sm font-semibold mb-2">To savour</h2>
+                <h3 class="text-4xl font-serif font-bold text-white">Our Menu</h3>
+                <div class="w-24 h-1 bg-amber-600 mx-auto mt-6 rounded"></div>
+            </div>
+
+            <!-- Menu Grid (3x3 Accordion) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+                <!-- 1. Desayunos -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-mug-hot text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Breakfasts</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Coffee/Tea
+                                    with classic toast</span><span class="text-amber-500 font-bold text-sm">2.50€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Assorted
+                                    toasts</span><span class="text-amber-500 font-bold text-sm">2.50€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 2. Sándwiches -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-layer-group text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Sandwiches</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-4">
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Cheese & Ham</span><span
+                                        class="text-amber-500 font-bold text-sm">2.50€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Ham and cheese</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Vegetarian</span><span
+                                        class="text-amber-500 font-bold text-sm">4.00€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Lettuce, tomato, asparagus, onion, egg</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Club</span><span
+                                        class="text-amber-500 font-bold text-sm">5.50€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Cheese & Ham + vegetarian</p>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 3. Ensaladas -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-leaf text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Salads</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tomato,
+                                    anchovy, marinated anchovies</span><span
+                                    class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tomato,
+                                    cheese, ham</span><span class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Mixed
+                                    Salad</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Piquillo
+                                    peppers and tuna</span><span class="text-amber-500 font-bold text-sm">8.50€</span>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 4. Raciones -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-plate-wheat text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Sharing Plates</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Cured meats
+                                    and cheese board</span><span class="text-amber-500 font-bold text-sm">15.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Patatas Bravas
+                                    with Aioli</span><span class="text-amber-500 font-bold text-sm">6.00€</span></li>
+                            <li class="flex justify-between gap-4"><span
+                                    class="text-sm text-neutral-300">Chips</span><span
+                                    class="text-amber-500 font-bold text-sm">4.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Meatballs in
+                                    sauce</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Pigs' ear in
+                                    sauce</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Lean pork with
+                                    tomato</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tripe
+                                    stew</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Chicken
+                                    nuggets</span><span class="text-amber-500 font-bold text-sm">6.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Croquettes (6
+                                    pcs)</span><span class="text-amber-500 font-bold text-sm">9.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Russian / Crab
+                                    salad</span><span class="text-amber-500 font-bold text-sm">6.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Vegetable
+                                    tempura</span><span class="text-amber-500 font-bold text-sm">5.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Fried squid
+                                    tentacles</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span
+                                    class="text-sm text-neutral-300">Fried/marinated anchovies</span><span
+                                    class="text-amber-500 font-bold text-sm">13.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Mussels in
+                                    vinaigrette/sauce</span><span class="text-amber-500 font-bold text-sm">13.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Grilled
+                                    squid</span><span class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Grilled prawns
+                                    / king prawns</span><span class="text-amber-500 font-bold text-sm">15.00€</span>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 5. Platos Combinados -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-utensils text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Set Meals</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Grilled
+                                    entrecôte</span><span class="text-amber-500 font-bold text-sm">18.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Pork loin,
+                                    chips and eggs</span><span class="text-amber-500 font-bold text-sm">9.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Chicken, chips
+                                    and eggs</span><span class="text-amber-500 font-bold text-sm">9.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Pork knuckle
+                                    with chips</span><span class="text-amber-500 font-bold text-sm">9.00€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 6. Bocadillos -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-bread-slice text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Baguettes</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Grilled pork
+                                    loin</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Bacon and
+                                    cheese</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Breaded
+                                    chicken</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Pulled
+                                    pork</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Fried
+                                    squid</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Serrano ham
+                                    and tomato</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Ham, cheese
+                                    and tomato</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Salmon, cheese
+                                    and avocado</span><span class="text-amber-500 font-bold text-sm">6.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tuna and
+                                    peppers</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 7. Hamburguesas -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-burger text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Burgers</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-4">
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Angus 190g</span><span
+                                        class="text-amber-500 font-bold text-sm">9.00€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Lettuce, tomato, onion, cheese, bacon and chips
+                                </p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Chicken</span><span
+                                        class="text-amber-500 font-bold text-sm">9.00€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Lettuce, tomato, onion, cheese and chips</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Pulled Pork</span><span
+                                        class="text-amber-500 font-bold text-sm">7.50€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Caramelised onion and chips</p>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 8. Paellas -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-fire-burner text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Paellas</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <p class="text-xs text-amber-500/80 mb-3 uppercase tracking-wider">Minimum 2 people</p>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Meat or
+                                    chicken
+                                    <span class="text-neutral-500 text-xs">(p.p.)</span></span><span
+                                    class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Seafood <span
+                                        class="text-neutral-500 text-xs">(p.p.)</span></span><span
+                                    class="text-amber-500 font-bold text-sm">12.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Vegetarian
+                                    <span class="text-neutral-500 text-xs">(p.p.)</span></span><span
+                                    class="text-amber-500 font-bold text-sm">8.00€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 9. Postres -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-cake-candles text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Desserts</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span
+                                    class="text-sm text-neutral-300">Cheesecake</span><span
+                                    class="text-amber-500 font-bold text-sm">4.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Chocolate
+                                    cake</span><span class="text-amber-500 font-bold text-sm">4.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Carrot
+                                    cake</span><span class="text-amber-500 font-bold text-sm">4.50€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+            </div>
+
+            <!-- Botón Ver Menú Completo -->
+            <div class="mt-16 text-center reveal">
+                <a href="menu.jpg" target="_blank"
+                    class="inline-block px-8 py-3 border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-neutral-900 rounded-full transition-all duration-300 font-semibold text-lg">
+                    View Full Menu
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Location & Hours Section -->
+    <section id="ubicacion" class="py-24 bg-neutral-950 relative border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                <!-- Info -->
+                <div class="reveal">
+                    <h2 class="text-amber-500 uppercase tracking-widest text-sm font-semibold mb-2">Find us</h2>
+                    <h3 class="text-4xl font-serif font-bold text-white mb-8">Opening Hours and Location</h3>
+
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div
+                                class="mt-1 bg-amber-600/20 p-3 rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-clock text-amber-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Opening Hours</h4>
+                                <ul class="space-y-2 text-neutral-400">
+                                    <li class="flex justify-between border-b border-white/10 pb-1">
+                                        <span>Monday - Thursday</span>
+                                        <span class="text-white">18:00 - 01:00</span>
+                                    </li>
+                                    <li class="flex justify-between border-b border-white/10 pb-1">
+                                        <span>Friday - Saturday</span>
+                                        <span class="text-white">18:00 - 03:00</span>
+                                    </li>
+                                    <li class="flex justify-between text-amber-500/80">
+                                        <span>Sunday</span>
+                                        <span>Closed</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="mt-1 bg-amber-600/20 p-3 rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-location-dot text-amber-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-white mb-2">Address</h4>
+                                <p class="text-neutral-400 leading-relaxed">
+                                    Calle Nuestro Padre Jesus, 7<br>
+                                    03170 Rojales, Alicante
+                                </p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=Casa+Lucio,+C.+Ntro+Padre+Jesu,+7,+03170+Rojales,+Alicante"
+                                    class="inline-block mt-3 text-amber-500 hover:text-amber-400 text-sm uppercase tracking-wider font-semibold">
+                                    Get Directions <i class="fa-solid fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13541.437630160277!2d-0.7247741499999999!3d38.0926489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63af003574516f%3A0x48d40b5b989b3714!2sCasa%20lucio!5e1!3m2!1ses!2ses!4v1789825409263!5m2!1ses!2ses"
+                        width="100%" height="400" style="border:0; border-radius: 8px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer id="contacto" class="bg-neutral-900 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 reveal">
+
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="font-serif text-3xl font-bold text-amber-500 flex items-center gap-2 mb-6">
+                        <i class="fa-solid fa-wine-glass"></i> Casa Lucio </a>
+                    <p class="text-neutral-400 mb-6 max-w-sm">
+                        Your favourite meeting point in town. Good music, great atmosphere, and the best flavours.
+                        Follow us on our social media.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Links</h4>
+                    <ul class="space-y-3 text-neutral-400">
+                        <li><a href="#menu" class="hover:text-amber-500 transition-colors">Our Menu</a></li>
+                        <li><a href="#ubicacion" class="hover:text-amber-500 transition-colors">Location</a></li>
+                        <li><a href="https://wa.me/34623631830?text=Hello,%20I%20would%20like%20to%20book%20a%20table"
+                                target="_blank" class="hover:text-amber-500 transition-colors">Reservations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6">Contact</h4>
+                    <ul class="space-y-4 text-neutral-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone mt-1 text-amber-500"></i>
+                            <span>+34 912 345 678</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-brands fa-whatsapp mt-1 text-amber-500"></i>
+                            <a href="https://wa.me/34600111222" target="_blank" class="hover:text-white">+34 600 111 222
+                                (Reservations via WhatsApp)</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-envelope mt-1 text-amber-500"></i>
+                            <a href="mailto:hola@elrincon.es" class="hover:text-white">hola@elrincon.es</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+                <p>&copy; 2026 Casa Lucio. All rights reserved.</p>
+                <p>Designed with <i class="fa-solid fa-heart text-amber-600 mx-1"></i> for you.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const icon = btn.querySelector('i');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+
+            // Close mobile menu on link click
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    const icon = btn.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // 2. Scroll Animation Reveal
+            const reveals = document.querySelectorAll('.reveal');
+
+            function reveal() {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+
+                reveals.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        el.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', reveal);
+            // Trigger once on load
+            reveal();
+
+            // 3. Navbar Background Change on Scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-lg');
+                    navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+                } else {
+                    navbar.classList.remove('shadow-lg');
+                    navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
+                }
+            });
+
+            // Prevent default behavior on placeholder links
+            document.querySelectorAll('a[href="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
