@@ -57,6 +57,28 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-switcher a {
+            text-decoration: none;
+            font-size: 24px;
+            /* Tamaño de las banderas */
+            margin-left: 10px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .language-switcher a:hover,
+        .language-switcher a.active {
+            opacity: 1;
+            /* La bandera del idioma actual se verá más brillante */
+        }
     </style>
 </head>
 
@@ -141,6 +163,10 @@
             <a href="#menu" class="text-white/50 hover:text-amber-500 transition-colors">
                 <i class="fa-solid fa-chevron-down text-2xl"></i>
             </a>
+        </div>
+        <div class="language-switcher">
+            <a href="index.html" class="active" title="Español">🇪🇸</a>
+            <a href="en.html" title="English">🇬🇧</a>
         </div>
     </header>
 
@@ -309,7 +335,7 @@
                                     Calle Nuestro Padre Jesus, 7<br>
                                     03170 Rojales, Alicante
                                 </p>
-                                <a href="#"
+                                <a href="https://www.google.com/maps/search/?api=1&query=Casa+Lucio,+C.+Ntro+Padre+Jesu,+7,+03170+Rojales,+Alicante"
                                     class="inline-block mt-3 text-amber-500 hover:text-amber-400 text-sm uppercase tracking-wider font-semibold">
                                     Obtener Direcciones <i class="fa-solid fa-arrow-right ml-1"></i>
                                 </a>
@@ -319,22 +345,12 @@
                 </div>
 
                 <!-- Map Placeholder -->
-                <div
-                    class="reveal rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 h-[400px] relative group">
-                    <!-- Map Image Placeholder -->
-                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop"
-                        alt="Mapa de ubicación"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-50 sepia-[.3] hue-rotate-[-30deg]">
-
-                    <!-- Overlay pin -->
-                    <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div
-                            class="bg-neutral-900/90 backdrop-blur-sm p-4 rounded-xl text-center border border-amber-500/30 shadow-lg">
-                            <i class="fa-solid fa-map-location-dot text-4xl text-amber-500 mb-2"></i>
-                            <p class="text-white font-serif font-bold text-l</p>
-                            <p class=" text-xs text-neutral-400 mt-1">Haz clic para interactuar</p>
-                        </div>
-                    </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13541.437630160277!2d-0.7247741499999999!3d38.0926489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63af003574516f%3A0x48d40b5b989b3714!2sCasa%20lucio!5e1!3m2!1ses!2ses!4v1789825409263!5m2!1ses!2ses"
+                        width="100%" height="400" style="border:0; border-radius: 8px;" allowfullscreen=""
+                        loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+                    </iframe>
                 </div>
 
             </div>
@@ -364,10 +380,6 @@
                         <a href="#"
                             class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
                             <i class="fa-brands fa-facebook-f text-lg"></i>
-                        </a>
-                        <a href="#"
-                            class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
-                            <i class="fa-brands fa-tripadvisor text-lg"></i>
                         </a>
                     </div>
                 </div>
