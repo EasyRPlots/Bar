@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Rincón | Tu Bar Local</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -33,32 +36,35 @@
             }
         }
     </script>
-    
+
     <style>
         /* Custom styles for specific needs */
         .hero-bg {
-            background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.9)), url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1974&auto=format&fit=crop');
+            background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.9)), url('Background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
-        
+
         /* Smooth reveal animation classes */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
+
 <body class="bg-neutral-900 text-neutral-300 font-sans antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-neutral-950/80 backdrop-blur-md border-b border-white/10" id="navbar">
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-neutral-950/80 backdrop-blur-md border-b border-white/10"
+        id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
@@ -68,17 +74,21 @@
                         El Rincón
                     </a>
                 </div>
-                
+
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#menu" class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Menú</a>
-                    <a href="#ubicacion" class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Ubicación</a>
-                    <a href="#contacto" class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Contacto</a>
-                    <a href="#reservas" class="bg-amber-600 hover:bg-amber-500 text-white px-5 py-2 rounded-full transition-colors text-sm font-semibold shadow-lg shadow-amber-900/20">
+                    <a href="#menu"
+                        class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Menú</a>
+                    <a href="#ubicacion"
+                        class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Ubicación</a>
+                    <a href="#contacto"
+                        class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Contacto</a>
+                    <a href="#reservas"
+                        class="bg-amber-600 hover:bg-amber-500 text-white px-5 py-2 rounded-full transition-colors text-sm font-semibold shadow-lg shadow-amber-900/20">
                         Reservar Mesa
                     </a>
                 </div>
-                
+
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-neutral-300 hover:text-white focus:outline-none">
@@ -87,14 +97,18 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile Menu (hidden by default) -->
         <div id="mobile-menu" class="hidden md:hidden bg-neutral-900 border-b border-white/10">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-                <a href="#menu" class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Menú</a>
-                <a href="#ubicacion" class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Ubicación</a>
-                <a href="#contacto" class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Contacto</a>
-                <a href="#reservas" class="mobile-link block mt-4 bg-amber-600 text-white px-5 py-2 rounded-full w-full text-center">Reservar</a>
+                <a href="#menu"
+                    class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Menú</a>
+                <a href="#ubicacion"
+                    class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Ubicación</a>
+                <a href="#contacto"
+                    class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Contacto</a>
+                <a href="#reservas"
+                    class="mobile-link block mt-4 bg-amber-600 text-white px-5 py-2 rounded-full w-full text-center">Reservar</a>
             </div>
         </div>
     </nav>
@@ -102,7 +116,8 @@
     <!-- Hero Section -->
     <header class="relative hero-bg h-screen flex items-center justify-center text-center">
         <div class="relative z-10 max-w-4xl px-4 sm:px-6 lg:px-8 flex flex-col items-center reveal active">
-            <span class="text-amber-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4">Bienvenido a tu casa</span>
+            <span class="text-amber-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4">Bienvenido a tu
+                casa</span>
             <h1 class="text-5xl md:text-7xl font-bold text-white font-serif mb-6 leading-tight">
                 El Rincón
             </h1>
@@ -110,15 +125,17 @@
                 Donde los buenos momentos se comparten. Disfruta de nuestras tapas artesanales y cócteles de autor.
             </p>
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#menu" class="px-8 py-3 border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-neutral-900 rounded-full transition-all duration-300 font-semibold text-lg">
+                <a href="#menu"
+                    class="px-8 py-3 border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-neutral-900 rounded-full transition-all duration-300 font-semibold text-lg">
                     Ver Menú
                 </a>
-                <a href="#ubicacion" class="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full transition-all duration-300 font-semibold text-lg">
+                <a href="#ubicacion"
+                    class="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full transition-all duration-300 font-semibold text-lg">
                     Cómo Llegar
                 </a>
             </div>
         </div>
-        
+
         <!-- Scroll indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
             <a href="#menu" class="text-white/50 hover:text-amber-500 transition-colors">
@@ -138,7 +155,7 @@
 
             <!-- Menu Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                
+
                 <!-- Category 1: Tapas -->
                 <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal">
                     <div class="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
@@ -171,7 +188,8 @@
                 </div>
 
                 <!-- Category 2: Cócteles -->
-                <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal" style="transition-delay: 100ms;">
+                <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal"
+                    style="transition-delay: 100ms;">
                     <div class="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
                         <i class="fa-solid fa-martini-glass-citrus text-2xl text-amber-500"></i>
                         <h4 class="text-2xl font-serif font-bold text-white">Cócteles</h4>
@@ -202,7 +220,8 @@
                 </div>
 
                 <!-- Category 3: Cervezas -->
-                <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal" style="transition-delay: 200ms;">
+                <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal"
+                    style="transition-delay: 200ms;">
                     <div class="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
                         <i class="fa-solid fa-beer-mug-empty text-2xl text-amber-500"></i>
                         <h4 class="text-2xl font-serif font-bold text-white">Cervezas</h4>
@@ -231,11 +250,12 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
-            
+
             <div class="mt-12 text-center reveal">
-                <a href="#" class="inline-flex items-center gap-2 text-amber-500 hover:text-amber-400 transition-colors font-medium">
+                <a href="#"
+                    class="inline-flex items-center gap-2 text-amber-500 hover:text-amber-400 transition-colors font-medium">
                     <i class="fa-solid fa-file-pdf"></i>
                     Descargar Menú Completo
                 </a>
@@ -247,15 +267,16 @@
     <section id="ubicacion" class="py-24 bg-neutral-950 relative border-t border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                
+
                 <!-- Info -->
                 <div class="reveal">
                     <h2 class="text-amber-500 uppercase tracking-widest text-sm font-semibold mb-2">Encuéntranos</h2>
                     <h3 class="text-4xl font-serif font-bold text-white mb-8">Horarios y Ubicación</h3>
-                    
+
                     <div class="space-y-8">
                         <div class="flex gap-4">
-                            <div class="mt-1 bg-amber-600/20 p-3 rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="mt-1 bg-amber-600/20 p-3 rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-clock text-amber-500 text-xl"></i>
                             </div>
                             <div>
@@ -278,7 +299,8 @@
                         </div>
 
                         <div class="flex gap-4">
-                            <div class="mt-1 bg-amber-600/20 p-3 rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
+                            <div
+                                class="mt-1 bg-amber-600/20 p-3 rounded-full h-12 w-12 flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-location-dot text-amber-500 text-xl"></i>
                             </div>
                             <div>
@@ -287,7 +309,8 @@
                                     Calle Principal 123, Barrio Antiguo<br>
                                     28001 Madrid, España
                                 </p>
-                                <a href="#" class="inline-block mt-3 text-amber-500 hover:text-amber-400 text-sm uppercase tracking-wider font-semibold">
+                                <a href="#"
+                                    class="inline-block mt-3 text-amber-500 hover:text-amber-400 text-sm uppercase tracking-wider font-semibold">
                                     Obtener Direcciones <i class="fa-solid fa-arrow-right ml-1"></i>
                                 </a>
                             </div>
@@ -296,20 +319,24 @@
                 </div>
 
                 <!-- Map Placeholder -->
-                <div class="reveal rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 h-[400px] relative group">
+                <div
+                    class="reveal rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 h-[400px] relative group">
                     <!-- Map Image Placeholder -->
-                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop" alt="Mapa de ubicación" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-50 sepia-[.3] hue-rotate-[-30deg]">
-                    
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop"
+                        alt="Mapa de ubicación"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-50 sepia-[.3] hue-rotate-[-30deg]">
+
                     <!-- Overlay pin -->
                     <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <div class="bg-neutral-900/90 backdrop-blur-sm p-4 rounded-xl text-center border border-amber-500/30 shadow-lg">
+                        <div
+                            class="bg-neutral-900/90 backdrop-blur-sm p-4 rounded-xl text-center border border-amber-500/30 shadow-lg">
                             <i class="fa-solid fa-map-location-dot text-4xl text-amber-500 mb-2"></i>
                             <p class="text-white font-serif font-bold text-lg">El Rincón</p>
                             <p class="text-xs text-neutral-400 mt-1">Haz clic para interactuar</p>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -318,7 +345,7 @@
     <footer id="contacto" class="bg-neutral-900 pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 reveal">
-                
+
                 <!-- Brand -->
                 <div class="lg:col-span-2">
                     <a href="#" class="font-serif text-3xl font-bold text-amber-500 flex items-center gap-2 mb-6">
@@ -326,16 +353,20 @@
                         El Rincón
                     </a>
                     <p class="text-neutral-400 mb-6 max-w-sm">
-                        Tu punto de encuentro favorito en la ciudad. Buena música, excelente ambiente y los mejores sabores. Síguenos en nuestras redes.
+                        Tu punto de encuentro favorito en la ciudad. Buena música, excelente ambiente y los mejores
+                        sabores. Síguenos en nuestras redes.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
-                        <a href="#" class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
                             <i class="fa-brands fa-facebook-f text-lg"></i>
                         </a>
-                        <a href="#" class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-amber-600 hover:text-white transition-all">
                             <i class="fa-brands fa-tripadvisor text-lg"></i>
                         </a>
                     </div>
@@ -373,7 +404,8 @@
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-neutral-500">
                 <p>&copy; 2026 Bar El Rincón. Todos los derechos reservados.</p>
                 <p>Diseñado con <i class="fa-solid fa-heart text-amber-600 mx-1"></i> para ti.</p>
             </div>
@@ -383,12 +415,12 @@
     <!-- Scripts for Interactivity -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // 1. Mobile Menu Toggle
             const btn = document.getElementById('mobile-menu-btn');
             const menu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
-            
+
             btn.addEventListener('click', () => {
                 menu.classList.toggle('hidden');
                 const icon = btn.querySelector('i');
@@ -413,11 +445,11 @@
 
             // 2. Scroll Animation Reveal
             const reveals = document.querySelectorAll('.reveal');
-            
+
             function reveal() {
                 const windowHeight = window.innerHeight;
                 const elementVisible = 100;
-                
+
                 reveals.forEach(el => {
                     const elementTop = el.getBoundingClientRect().top;
                     if (elementTop < windowHeight - elementVisible) {
@@ -425,11 +457,11 @@
                     }
                 });
             }
-            
+
             window.addEventListener('scroll', reveal);
             // Trigger once on load
             reveal();
-            
+
             // 3. Navbar Background Change on Scroll
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
@@ -441,7 +473,7 @@
                     navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
                 }
             });
-            
+
             // Prevent default behavior on placeholder links
             document.querySelectorAll('a[href="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -451,4 +483,5 @@
         });
     </script>
 </body>
+
 </html>
