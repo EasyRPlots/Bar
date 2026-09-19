@@ -63,6 +63,12 @@
             top: 20px;
             right: 20px;
             z-index: 1000;
+            display: flex;
+            /* Fuerza la alineación horizontal */
+            align-items: center;
+            /* Centra las banderas verticalmente */
+            gap: 15px;
+            /* Crea el espacio entre ellas */
         }
 
         .language-switcher a {
@@ -72,6 +78,14 @@
             margin-left: 10px;
             opacity: 0.5;
             transition: opacity 0.3s ease;
+        }
+
+        .language-switcher img {
+            border-radius: 3px;
+            /* Redondea un poco los bordes de la bandera */
+            vertical-align: middle;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            /* Da un pequeño efecto de sombra para que resalte */
         }
 
         .language-switcher a:hover,
@@ -92,7 +106,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="font-serif text-2xl font-bold text-amber-500 flex items-center gap-2">
-                        <i class="fa-solid fa-wine-glass"></i>
+                        <i class="fa-solid fa-wine-glass"></i> Casa Lucio </a>
 
                     </a>
                 </div>
@@ -105,7 +119,8 @@
                         class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Ubicación</a>
                     <a href="#contacto"
                         class="text-neutral-300 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider font-medium">Contacto</a>
-                    <a href="#reservas"
+                    <a href="https://wa.me/34623631830?text=Hola,%20me%20gustar%C3%ADa%20reservar%20una%20mesa"
+                        target="_blank"
                         class="bg-amber-600 hover:bg-amber-500 text-white px-5 py-2 rounded-full transition-colors text-sm font-semibold shadow-lg shadow-amber-900/20">
                         Reservar Mesa
                     </a>
@@ -129,8 +144,11 @@
                     class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Ubicación</a>
                 <a href="#contacto"
                     class="mobile-link block px-3 py-2 text-base font-medium text-neutral-300 hover:text-amber-500">Contacto</a>
-                <a href="#reservas"
-                    class="mobile-link block mt-4 bg-amber-600 text-white px-5 py-2 rounded-full w-full text-center">Reservar</a>
+                <a href="https://wa.me/34623631830?text=Hola,%20me%20gustar%C3%ADa%20reservar%20una%20mesa"
+                    target="_blank"
+                    class="mobile-link block mt-4 bg-amber-600 text-white px-5 py-2 rounded-full w-full text-center">
+                    Reservar
+                </a>
             </div>
         </div>
     </nav>
@@ -140,7 +158,7 @@
         <div class="relative z-10 max-w-4xl px-4 sm:px-6 lg:px-8 flex flex-col items-center reveal active">
             <span class="text-amber-500 uppercase tracking-[0.3em] text-sm font-semibold mb-4">Bienvenido a tu
                 casa</span>
-            <h1 class="text-5xl md:text-7xl font-bold text-white font-serif mb-6 leading-tight">
+            <h1 class="text-5xl md:text-7xl font-bold text-white font-serif mb-6 leading-tight">Casa Lucio</h1>
 
             </h1>
             <p class="mt-4 text-xl md:text-2xl text-neutral-300 font-light mb-10 max-w-2xl mx-auto">
@@ -165,8 +183,12 @@
             </a>
         </div>
         <div class="language-switcher">
-            <a href="index.html" class="active" title="Español">🇪🇸</a>
-            <a href="en.html" title="English">🇬🇧</a>
+            <a href="index.html" class="active" title="Español">
+                <img src="https://flagcdn.com/w40/es.png" alt="Bandera de España" width="28">
+            </a>
+            <a href="en.html" title="English">
+                <img src="https://flagcdn.com/w40/gb.png" alt="Bandera del Reino Unido" width="28">
+            </a>
         </div>
     </header>
 
@@ -175,117 +197,310 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-amber-500 uppercase tracking-widest text-sm font-semibold mb-2">Para degustar</h2>
-                <h3 class="text-4xl font-serif font-bold text-white">Nuestro Menú</h3>
+                <h3 class="text-4xl font-serif font-bold text-white">Nuestra Carta</h3>
                 <div class="w-24 h-1 bg-amber-600 mx-auto mt-6 rounded"></div>
             </div>
 
-            <!-- Menu Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Menu Grid (3x3 Accordion) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
-                <!-- Category 1: Tapas -->
-                <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal">
-                    <div class="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
-                        <i class="fa-solid fa-utensils text-2xl text-amber-500"></i>
-                        <h4 class="text-2xl font-serif font-bold text-white">Tapas</h4>
+                <!-- 1. Desayunos -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-mug-hot text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Desayunos</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Café/Té con
+                                    tostada clásica</span><span class="text-amber-500 font-bold text-sm">2.50€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tostas
+                                    variadas</span><span class="text-amber-500 font-bold text-sm">2.50€</span></li>
+                        </ul>
                     </div>
-                    <ul class="space-y-6">
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Patatas Bravas</h5>
-                                <span class="text-amber-500 font-bold">€6.50</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Salsa brava casera y alioli suave.</p>
-                        </li>
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Croquetas de Jamón</h5>
-                                <span class="text-amber-500 font-bold">€7.00</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Crujientes por fuera, cremosas por dentro (6 uds).</p>
-                        </li>
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Tabla Ibérica</h5>
-                                <span class="text-amber-500 font-bold">€14.00</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Selección de quesos y embutidos locales.</p>
-                        </li>
-                    </ul>
-                </div>
+                </details>
 
-                <!-- Category 2: Cócteles -->
-                <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal"
-                    style="transition-delay: 100ms;">
-                    <div class="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
-                        <i class="fa-solid fa-martini-glass-citrus text-2xl text-amber-500"></i>
-                        <h4 class="text-2xl font-serif font-bold text-white">Cócteles</h4>
+                <!-- 2. Sándwiches -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-layer-group text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Sándwiches</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-4">
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Mixto</span><span
+                                        class="text-amber-500 font-bold text-sm">2.50€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Jamón y queso</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Vegetal</span><span
+                                        class="text-amber-500 font-bold text-sm">4.00€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Lechuga, tomate, espárrago, cebolla, huevo</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Club</span><span
+                                        class="text-amber-500 font-bold text-sm">5.50€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Mixto + vegetal</p>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="space-y-6">
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Mojito Clásico</h5>
-                                <span class="text-amber-500 font-bold">€8.00</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Ron blanco, hierbabuena fresca, lima y soda.</p>
-                        </li>
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Negroni de la Casa</h5>
-                                <span class="text-amber-500 font-bold">€9.50</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Ginebra, vermut rojo, Campari y toque de naranja.</p>
-                        </li>
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Pisco Sour</h5>
-                                <span class="text-amber-500 font-bold">€9.00</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Pisco, zumo de limón, sirope y clara de huevo.</p>
-                        </li>
-                    </ul>
-                </div>
+                </details>
 
-                <!-- Category 3: Cervezas -->
-                <div class="bg-neutral-800/50 p-8 rounded-2xl border border-white/5 reveal"
-                    style="transition-delay: 200ms;">
-                    <div class="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
-                        <i class="fa-solid fa-beer-mug-empty text-2xl text-amber-500"></i>
-                        <h4 class="text-2xl font-serif font-bold text-white">Cervezas</h4>
+                <!-- 3. Ensaladas -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-leaf text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Ensaladas</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tomate,
+                                    anchoa, boquerones</span><span
+                                    class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tomate, queso,
+                                    jamón</span><span class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Ensalada
+                                    Mixta</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Pimientos
+                                    piquillo y atún</span><span class="text-amber-500 font-bold text-sm">8.50€</span>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="space-y-6">
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Caña / Doble</h5>
-                                <span class="text-amber-500 font-bold">€2.00 / €3.50</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Estrella Galicia de barril, bien fría.</p>
-                        </li>
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">IPA Artesanal</h5>
-                                <span class="text-amber-500 font-bold">€5.00</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Cerveza local con notas cítricas y amargor intenso.</p>
-                        </li>
-                        <li>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h5 class="text-lg font-semibold text-white">Tostada 1906</h5>
-                                <span class="text-amber-500 font-bold">€4.00</span>
-                            </div>
-                            <p class="text-sm text-neutral-400">Reserva especial, intenso sabor a malta tostada.</p>
-                        </li>
-                    </ul>
-                </div>
+                </details>
+
+                <!-- 4. Raciones -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-plate-wheat text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Raciones</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tabla
+                                    embutidos y queso</span><span class="text-amber-500 font-bold text-sm">15.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Patatas Bravas
+                                    con Alioli</span><span class="text-amber-500 font-bold text-sm">6.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Patatas
+                                    fritas</span><span class="text-amber-500 font-bold text-sm">4.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Albóndigas con
+                                    salsa</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Oreja en
+                                    salsa</span><span class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Magra con
+                                    tomate</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span
+                                    class="text-sm text-neutral-300">Callos</span><span
+                                    class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Nuggets de
+                                    pollo</span><span class="text-amber-500 font-bold text-sm">6.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Croquetas (6
+                                    ud)</span><span class="text-amber-500 font-bold text-sm">9.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Ensaladilla
+                                    Rusa / Cangrejo</span><span class="text-amber-500 font-bold text-sm">6.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Verdura en
+                                    tempura</span><span class="text-amber-500 font-bold text-sm">5.50€</span></li>
+                            <li class="flex justify-between gap-4"><span
+                                    class="text-sm text-neutral-300">Rejos</span><span
+                                    class="text-amber-500 font-bold text-sm">7.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Boquerones
+                                    fritos/vinagre</span><span class="text-amber-500 font-bold text-sm">13.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Mejillones
+                                    vinagreta/salsa</span><span class="text-amber-500 font-bold text-sm">13.00€</span>
+                            </li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Calamar a la
+                                    plancha</span><span class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Gambas /
+                                    Gambón plancha</span><span class="text-amber-500 font-bold text-sm">15.00€</span>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 5. Platos Combinados -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-utensils text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Combinados</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Entrecot a la
+                                    parrilla</span><span class="text-amber-500 font-bold text-sm">18.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Lomo, patatas
+                                    y huevos</span><span class="text-amber-500 font-bold text-sm">9.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Pollo, patatas
+                                    y huevos</span><span class="text-amber-500 font-bold text-sm">9.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Codillo con
+                                    patatas</span><span class="text-amber-500 font-bold text-sm">9.00€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 6. Bocadillos -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-bread-slice text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Bocadillos</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Lomo a la
+                                    plancha</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Bacon con
+                                    queso</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Pollo
+                                    empanado</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Carne
+                                    mechada</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span
+                                    class="text-sm text-neutral-300">Calamares</span><span
+                                    class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Jamón y
+                                    tomate</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Jamón queso y
+                                    tomate</span><span class="text-amber-500 font-bold text-sm">6.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Salmón queso y
+                                    aguacate</span><span class="text-amber-500 font-bold text-sm">6.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Atún y
+                                    pimientos</span><span class="text-amber-500 font-bold text-sm">5.00€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 7. Hamburguesas -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-burger text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Hamburguesas</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-4">
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Angus 190grs</span><span
+                                        class="text-amber-500 font-bold text-sm">9.00€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Lechuga, tomate, cebolla, queso, bacon y
+                                    patatas</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">De Pollo</span><span
+                                        class="text-amber-500 font-bold text-sm">9.00€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Lechuga, tomate, cebolla, queso y patatas</p>
+                            </li>
+                            <li>
+                                <div class="flex justify-between gap-4"><span
+                                        class="text-sm font-bold text-neutral-200">Carne Mechada</span><span
+                                        class="text-amber-500 font-bold text-sm">7.50€</span></div>
+                                <p class="text-xs text-neutral-500 mt-1">Cebolla caramelizada y patatas</p>
+                            </li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 8. Paellas -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-fire-burner text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Paellas</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <p class="text-xs text-amber-500/80 mb-3 uppercase tracking-wider">Mínimo 2 personas</p>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Carne o pollo
+                                    <span class="text-neutral-500 text-xs">(p.p.)</span></span><span
+                                    class="text-amber-500 font-bold text-sm">10.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Marisco <span
+                                        class="text-neutral-500 text-xs">(p.p.)</span></span><span
+                                    class="text-amber-500 font-bold text-sm">12.00€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Vegetariana
+                                    <span class="text-neutral-500 text-xs">(p.p.)</span></span><span
+                                    class="text-amber-500 font-bold text-sm">8.00€</span></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- 9. Postres -->
+                <details class="bg-neutral-800/50 rounded-xl border border-white/5 group reveal">
+                    <summary
+                        class="cursor-pointer p-5 flex justify-between items-center list-none [&::-webkit-details-marker]:hidden hover:bg-white/5 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-cake-candles text-amber-500 text-lg"></i>
+                            <span class="font-serif text-xl font-bold text-white">Postres</span>
+                        </div>
+                        <i
+                            class="fa-solid fa-chevron-down text-sm text-neutral-400 group-open:rotate-180 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 border-t border-white/5 mt-2 pt-4">
+                        <ul class="space-y-3">
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tarta de
+                                    queso</span><span class="text-amber-500 font-bold text-sm">4.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tarta de
+                                    chocolate</span><span class="text-amber-500 font-bold text-sm">4.50€</span></li>
+                            <li class="flex justify-between gap-4"><span class="text-sm text-neutral-300">Tarta de
+                                    Zanahoria</span><span class="text-amber-500 font-bold text-sm">4.50€</span></li>
+                        </ul>
+                    </div>
+                </details>
 
             </div>
 
-            <div class="mt-12 text-center reveal">
-                <a href="#"
-                    class="inline-flex items-center gap-2 text-amber-500 hover:text-amber-400 transition-colors font-medium">
-                    <i class="fa-solid fa-file-pdf"></i>
-                    Descargar Menú Completo
+            <!-- Botón Ver Menú Completo -->
+            <div class="mt-16 text-center reveal">
+                <a href="menu.jpg" target="_blank"
+                    class="inline-block px-8 py-3 border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-neutral-900 rounded-full transition-all duration-300 font-semibold text-lg">
+                    Ver Menú Completo
                 </a>
             </div>
+
         </div>
     </section>
 
@@ -365,7 +580,7 @@
                 <!-- Brand -->
                 <div class="lg:col-span-2">
                     <a href="#" class="font-serif text-3xl font-bold text-amber-500 flex items-center gap-2 mb-6">
-                        <i class="fa-solid fa-wine-glass"></i>
+                        <i class="fa-solid fa-wine-glass"></i> Casa Lucio </a>
 
                     </a>
                     <p class="text-neutral-400 mb-6 max-w-sm">
@@ -388,10 +603,10 @@
                 <div>
                     <h4 class="text-white font-bold text-lg mb-6">Enlaces</h4>
                     <ul class="space-y-3 text-neutral-400">
-                        <li><a href="#" class="hover:text-amber-500 transition-colors">Inicio</a></li>
                         <li><a href="#menu" class="hover:text-amber-500 transition-colors">Nuestro Menú</a></li>
                         <li><a href="#ubicacion" class="hover:text-amber-500 transition-colors">Ubicación</a></li>
-                        <li><a href="#reservas" class="hover:text-amber-500 transition-colors">Reservas</a></li>
+                        <li><a href="https://wa.me/34623631830?text=Hola,%20me%20gustar%C3%ADa%20reservar%20una%20mesa"
+                                target="_blank" class="hover:text-amber-500 transition-colors">Reservas</a></li>
                         <li><a href="#" class="hover:text-amber-500 transition-colors">Política de Privacidad</a></li>
                     </ul>
                 </div>
@@ -406,7 +621,8 @@
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-brands fa-whatsapp mt-1 text-amber-500"></i>
-                            <span>+34 600 111 222 (Solo mensajes)</span>
+                            <a href="https://wa.me/34600111222" target="_blank" class="hover:text-white">+34 600 111 222
+                                (Reservas por WhatsApp)</a>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-envelope mt-1 text-amber-500"></i>
